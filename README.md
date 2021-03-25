@@ -1,6 +1,6 @@
 # PiicoDev® TMP117 MicroPython Module
 
-This is the firmware repo for the Core Electronics PiicoDev® Precision Temperature Sensor TMP117
+This is the firmware repo for the [Core Electronics PiicoDev® Precision Temperature Sensor TMP117](https://core-electronics.com.au/catalog/product/view/sku/CE07502)
 
 See the [Quickstart Guide](https://core-electronics.com.au/tutorials/quickstart-guide-piicodev-precision-temperature-sensor-tmp117-and-micropython.html)
 
