@@ -24,8 +24,10 @@ class PiicoDev_TMP117(object):
         
     
     def readTempC(self):
-        self.i2c.UnifiedWrite(self.addr, REG_TEMPC)
-        data = self.i2c.UnifiedRead(self.addr, 2) # returns a bytes object
+        data = self.i2c.read16(self.addr, REG_TEMPC)
+        
+#         self.i2c.UnifiedWrite(self.addr, REG_TEMPC)
+#         data = self.i2c.UnifiedRead(self.addr, 2) # returns a bytes object
         tempDataRaw = int.from_bytes(data, 'big')
         # handle negatives (MicroPython int.from_bytes does not support signed conversion (yet)
         if tempDataRaw >= 0x8000:
