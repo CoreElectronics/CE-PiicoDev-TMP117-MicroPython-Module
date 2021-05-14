@@ -2,22 +2,18 @@
 # This program reads the temperature from the PiicoDev TMP117 precision temperature sensor
 # and displays the result in Degrees Celsius, Farenheit and Kelvin
 
-from PiicoDev_TMP117 import PiicoDev_TMP117
-from utime import sleep_ms
+from PiicoDev_TMP117 import PiicoDev_TMP117, sleep_ms
 
-temp = PiicoDev_TMP117()
+tempSensor = PiicoDev_TMP117()
 
 
 while True:
     # Read and print the temperature in various units
-    tempC = temp.readTempC() # Celsius
-    tempF = temp.readTempF() # Farenheit
-    tempK = temp.readTempK() # Kelvin
+    tempC = tempSensor.readTempC() # Celsius
+    tempF = tempSensor.readTempF() # Farenheit
+    tempK = tempSensor.readTempK() # Kelvin
     
-    tempStringC = str(tempC) # convert temperature number to string
-    tempStringF = str(tempF)
-    tempStringK = str(tempK)
+    # Convert temperature into a string and print the data
+    print("It's " + str(tempC) + "°C")
     
-    print("It's " + tempStringC + "°C")
-    
-    sleep_ms(1000)
+    sleep_ms(1000) # delay (milliseconds)
