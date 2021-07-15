@@ -11,23 +11,19 @@
 # Updated to work with unified PiicoDev i2c module.
 
 from PiicoDev_Unified import *
-i2c = PiicoDev_Unified_I2C()
-
 
 # Register definitions
 REG_TEMPC = b'\x00'
 
 class PiicoDev_TMP117(object):    
-    def __init__(self, addr = 0x48, i2c = i2c):
-        self.i2c = i2c
+    def __init__(self, bus=None, freq=None, sda=None, scl=None, addr = 0x48):
+        self.i2c = create_unified_i2c(bus=bus, freq=freq, sda=sda, scl=scl)
         self.addr = addr
         
     
     def readTempC(self):
         data = self.i2c.read16(self.addr, REG_TEMPC)
         
-#         self.i2c.UnifiedWrite(self.addr, REG_TEMPC)
-#         data = self.i2c.UnifiedRead(self.addr, 2) # returns a bytes object
         tempDataRaw = int.from_bytes(data, 'big')
         # handle negatives (MicroPython int.from_bytes does not support signed conversion (yet)
         if tempDataRaw >= 0x8000:
