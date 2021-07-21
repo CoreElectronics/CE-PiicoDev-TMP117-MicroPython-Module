@@ -14,6 +14,6 @@ while True:
     tempK = tempSensor.readTempK() # Kelvin
     
     # Convert temperature into a string and print the data
-    print(str(tempC) + "°C")
+    print(str(tempC) + " °C")
     
     sleep(1) # delay
