@@ -14,15 +14,25 @@ from PiicoDev_Unified import *
 
 # Register definitions
 REG_TEMPC = b'\x00'
+compat_str = 'This device library requires the latest version of the Unified PiicoDev library.  Get the latest drivers: piico.dev/unified'
 
 class PiicoDev_TMP117(object):    
     def __init__(self, bus=None, freq=None, sda=None, scl=None, addr = 0x48):
-        self.i2c = create_unified_i2c(bus=bus, freq=freq, sda=sda, scl=scl)
-        self.addr = addr
-        
-    
+        try:
+            if compat_ind >= 1:
+                self.i2c = create_unified_i2c(bus=bus, freq=freq, sda=sda, scl=scl)
+                self.addr = addr
+            else:
+                print(compatability_string)
+        except:
+            print(compatability_string) 
+
     def readTempC(self):
-        data = self.i2c.read16(self.addr, REG_TEMPC)
+        try:
+            data = self.i2c.read16(self.addr, REG_TEMPC)
+        except:
+            print(i2c_err_str.format(self.addr))
+            return None
         
         tempDataRaw = int.from_bytes(data, 'big')
         # handle negatives (MicroPython int.from_bytes does not support signed conversion (yet)
@@ -32,7 +42,15 @@ class PiicoDev_TMP117(object):
             return tempDataRaw * 7.8125e-3 # One LSB equals 7.812 mdegC
     
     def readTempF(self):
-        return (self.readTempC() * 9/5) + 32
+        try:
+            return (self.readTempC() * 9/5) + 32
+        except:
+            print(i2c_err_str.format(self.addr))
+            return None
         
     def readTempK(self):
-        return self.readTempC() + 273.15
+        try:
+            return self.readTempC() + 273.15
+        except:
+            print(i2c_err_str.format(self.addr))
+            return None
