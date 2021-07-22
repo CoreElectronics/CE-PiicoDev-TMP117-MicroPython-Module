@@ -17,11 +17,8 @@ class PiicoDev_TMP117(object):
                 print(compat_str)
         except:
             print(compat_str)
-        try:
-            self.i2c = create_unified_i2c(bus=bus, freq=freq, sda=sda, scl=scl)
-            self.addr = addr
-        except:
-            print(i2c_err_str)
+        self.i2c = create_unified_i2c(bus=bus, freq=freq, sda=sda, scl=scl)
+        self.addr = addr
 
     def readTempC(self):
         try:
