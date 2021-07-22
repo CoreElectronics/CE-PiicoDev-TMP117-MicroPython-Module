@@ -25,7 +25,7 @@ class PiicoDev_TMP117(object):
             data = self.i2c.read16(self.addr, REG_TEMPC)
         except:
             print(i2c_err_str.format(self.addr))
-            return None
+            return float('NaN')
         
         tempDataRaw = int.from_bytes(data, 'big')
         # handle negatives
@@ -35,13 +35,8 @@ class PiicoDev_TMP117(object):
             return tempDataRaw * 7.8125e-3 # One LSB equals 7.812 mdegC
     
     def readTempF(self):
-        try:
-            return (self.readTempC() * 9/5) + 32
-        except:
-            return None
+        return (self.readTempC() * 9/5) + 32
         
     def readTempK(self):
-        try:
-            return self.readTempC() + 273.15
-        except:
-            return None
+        return self.readTempC() + 273.15
+
