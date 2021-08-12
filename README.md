@@ -11,7 +11,7 @@ See the Quickstart Guides for:
 
 # Usage
 ## Example
-[main.py](https://github.com/CoreElectronics/CE-PiicoDev-BME280-MicroPython-Module) is a simple example to get started.
+[main.py](https://github.com/CoreElectronics/CE-PiicoDev-TMP117-MicroPython-Module/blob/main/main.py) is a simple example to get started.
 ```
 from PiicoDev_TMP117 import PiicoDev_TMP117
 from time import sleep
