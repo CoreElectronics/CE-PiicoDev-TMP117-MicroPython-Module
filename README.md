@@ -34,7 +34,7 @@ while True:
     sleep_ms(1000) # delay 1 second
 ```
 ## Details
-### PiicoDev_TMP117(bus=, freq=, sda=, scl=, address=0x48)
+### PiicoDev_TMP117(bus=, freq=, sda=, scl=, addr=0x48)
 Parameter | Type | Range | Default | Description
 --- | --- | --- | --- | ---
 bus | int | 0,1 | Raspberry Pi Pico: 0, Raspberry Pi: 1 | I2C Bus.  Ignored on Micro:bit
