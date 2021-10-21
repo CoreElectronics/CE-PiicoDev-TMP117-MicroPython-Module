@@ -12,7 +12,7 @@ See the Quickstart Guides for:
 # Usage
 ## Example
 [main.py](https://github.com/CoreElectronics/CE-PiicoDev-TMP117-MicroPython-Module/blob/main/main.py) is a simple example to get started.
-```
+```python
 from PiicoDev_TMP117 import PiicoDev_TMP117
 from time import sleep
 tempSensor = PiicoDev_TMP117()
@@ -34,7 +34,7 @@ bus | int | 0,1 | Raspberry Pi Pico: 0, Raspberry Pi: 1 | I2C Bus.  Ignored on M
 freq | int | 100-1000000 | Device dependent | I2C Bus frequency (Hz).  Ignored on Raspberry Pi
 sda | Pin | Device Dependent | Device Dependent | I2C SDA Pin. Implemented on Raspberry Pi Pico only
 scl | Pin | Device Dependent | Device Dependent | I2C SCL Pin. Implemented on Raspberry Pi Pico only
-address | int | 0x48, 0x49, 0x4A, 0x4B | 0x48 | This address needs to match the PiicoDev Precision Temperature Sensor TMP117 hardware address configured by the jumper
+addr | int | 0x48, 0x49, 0x4A, 0x4B | 0x48 | This address needs to match the PiicoDev Precision Temperature Sensor TMP117 hardware address configured by the jumper
 
 ### PiicoDev_TMP117.readTempC()
 Parameter | Type | Unit | Description
